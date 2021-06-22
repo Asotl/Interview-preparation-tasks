@@ -1,50 +1,13 @@
-#a = int(input())
-#b = list(map(int,input().strip().split()))[:a]
-#k = int(input())
-a = 7
-b = [1, 2, 3, 4, 5, 6, 7]
-k = 4
 
-# def ShiftChar(timeseries, K):
-#     result = []  # Пустой массив.
-#     for begin_index in range(0,len(timeseries) - K):
-#         end_index = begin_index + K
-#         # Просматриваем окно шириной K.
-#         current_sum = 0
-#         for  v in range(begin_index, end_index): #timeseries[begin_index .. end_index):
-#             current_sum += timeseries[v]
-#         current_avg = current_sum / K
-#         result.append(current_avg)
-#     return result 
-    
-# ShiftChar(b, k)
+"""
+Вам дана статистика по числу запросов в секунду к вашему любимому рекомендательному сервису.
+Измерения велись n секунд.
+В секунду i поступает qi запросов.
+Примените метод скользящего среднего с длиной окна k к этим данным и выведите результат.
 
-
-
-
-# a = int(input())
-# b = list(map(int,input().strip().split()))[:a]
-# k = int(input())
-
-# def sum(a, b, k):
-# 	result = []
-# 	sumk = 0 
-# 	for num in b[0:k]:
-# 		sumk += num
-# 	result.append(sumk/k)
-# 	for i in range(0, a-k+1):
-# 		k -= b[i]
-# 		sumk += b[i+1]
-# 		sum_avg = sumk/k
-# 		result.append(sum_avg)
-# 	print(*result)
-
-
-# sum(a, b, k)
-
-
-
-
+a = int(input())
+b = list(map(int,input().strip().split()))[:a]
+k = int(input())
 def opt_sum(timeseries, K):
     result = []
     sumk = 0  # Пустой массив.
@@ -58,7 +21,62 @@ def opt_sum(timeseries, K):
         current_avg = current_sum / K
         result.append(current_avg)
         print(result)
-    
     return result 
 
 sum( b, k)
+-------------------------------------------------------------------------------------------
+
+Рита и Гоша играют в игру. 
+У Риты есть n фишек, на каждой из которых написано количество очков.
+Сначала Гоша называет число k, затем Рита должна выбрать две фишки, сумма очков на которых равна заданному числу.
+Рите надоело искать фишки самой, и она решила применить свои навыки программирования для решения этой задачи. 
+
+a = int(input())
+b = list(map(int,input().strip().split()))[:a]
+k = int(input())
+
+
+
+def Siski(number, numbers, X):
+    for i in range(0, number - 1):
+        for j in range(i+1, number):
+            print(numbers[i],"+", numbers[j], '=', numbers[i] + numbers[j])
+            if numbers[i] + numbers[j] == X:
+                print(numbers[i], numbers[j])
+                return numbers[i], numbers[j]
+    print("None")
+    return None
+
+Siski(a, b, k)
+-------------------------------------------------------------------------------------------
+"""
+
+# a = int(input())
+# b = list(map(int,input().strip().split()))[:a]
+# k = int(input())
+a = 6
+b = [-9, -7, -6, -1, -1, 3]
+k = 2
+
+def twosum_with_sort(number, numbers, X):
+    numbers.sort()
+    #print(numbers)
+    left = 0
+    right = number - 1
+    while left < right:
+        current_sum = numbers[left] + numbers[right]
+        #print(current_sum)
+        if current_sum == X:
+            print(numbers[left], numbers[right])
+            return numbers[left], numbers[right]
+        if current_sum < X:
+            #print(current_sum, " < ", X)
+            left += 1
+        else:
+            #print(current_sum, " > ", X)
+            right += 1
+    print('None')
+    return None
+
+twosum_with_sort(a, b, k)
+       
